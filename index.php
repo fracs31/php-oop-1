@@ -2,8 +2,12 @@
 <?php
     require_once __DIR__ . "./database/db.php"; //importo il database
     require_once __DIR__ . "./models/Movie.php"; //includo la classe "Movie"
-    $movie1 = new Movie($movies[0]["title"], $movies[0]["original_title"], $movies[0]["country"], $movies[0]["description"], $movies[0]["genres"]); //creo un'istanza di classe "Movie"
-    $movie2 = new Movie($movies[1]["title"], $movies[1]["original_title"], $movies[1]["country"], $movies[1]["description"], $movies[1]["genres"]); //creo un'istanza di classe "Movie"
+    $movies_list = []; //lista di film
+    //Ciclo
+    for ($i = 0; $i < count($movies); $i++) {
+        $movies_list[$i] = new Movie($movies[$i]["image"], $movies[$i]["title"], $movies[$i]["original_title"], $movies[$i]["country"], $movies[$i]["description"], $movies[$i]["genres"]); //prendo i dati dal finto database e li salvo in un array
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,44 +25,32 @@
         <div class="container">
             <!-- Lista dei film -->
             <ul class="list">
-                <!-- Elemento della lista -->
-                <li class="list-item">
-                    <!-- Carta -->
-                    <div class="card">
-                        <!-- Testa della carta -->
-                        <div class="card__head">
-                        <!-- Immagine della carta -->
-                            <img class="card__image" src="https://www.stardust.it/uploads/img/movie/poster/84a60b3a20d20ec90cacca62641848591555193011-1000w.jpg" alt="Ritorno al futuro">
-                        </div>
-                        <!-- Corpo della carta -->
-                        <div class="card__body">
-                            <!-- Titolo -->
-                            <h2 class="card__title">
-                                Ritorno al futuro
-                            </h2>
-                            <!-- Titolo originale -->
-                            <h3 class="card__original-title">
-                                Back to The Future
-                            </h3>
-                            <!-- Descrizione -->
-                            <h4 class="card__description">
-                                Lorem Ipsum
-                            </h4>
-                            <!-- Paese -->
-                            <h4 class="card__countru">
-                                USA
-                            </h4>
-                            <h4 class="card__genres">
-                                <span>
-                                    Azione
-                                </span>
-                                <span>
-                                    Avventura
-                                </span>
-                            </h4>
-                        </div>
-                    </div>
-                </li>
+                <!-- PHP -->
+                <?php
+                    //Ciclo
+                    for ($i = 0; $i < count($movies_list); $i++) {
+                        echo "<li class='list-item'>"; //elemento della lista
+                        echo "<div class='card'>"; //carta
+                        echo "<div class='card__head'>"; //testa della carta
+                        echo "<img class='card__image' src='" . $movies_list[$i]->getImage() . "'>"; //immagine del carta
+                        echo "</div>"; //fine della testa della carta
+                        echo "<div class='card__body'>"; //corpo della carta
+                        echo "<h2 class='card__title'>" . $movies_list[$i]->getTitle() . "</h2>"; //titolo
+                        echo "<h3 class='card__original-title'>" . $movies_list[$i]->getOriginalTitle() . "</h3>"; //titolo originale
+                        echo "<h4 class='card__description'>" . $movies_list[$i]->getDescription() . "</h4>"; //descrizione
+                        echo "<h4 class='card__country'>" . $movies_list[$i]->getCountry() . "</h4>"; //paese
+                        echo "<h4 class='card__genres'>"; //generi
+                        $genres = $movies_list[$i]->getGenres(); //prendo i generi del film
+                        //Ciclo
+                        for ($j = 0; $j < count($genres); $j++) {
+                            echo "<span class='card__genres--genre'>" . $genres[$j] . "</span>"; //stampo i generi del film
+                        }
+                        echo "</h4>"; //fine generi
+                        echo "</div>"; //fine del corpo della carta
+                        echo "</div>"; //fine della carta
+                        echo "</li>"; //fine dell'elemento della lista
+                    }
+                ?>
             </ul>
         </div>
     </main>

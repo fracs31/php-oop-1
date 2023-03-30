@@ -1,18 +1,24 @@
 <?php
 //Classe "Movie"
 class Movie {
+    public $image; //immagine
     public $title; //titolo
     public $original_title; //titolo originale
     public $country; //paese
     public $description; //descrizione
     public $genres; //generi
     //Costruttore
-    public function __construct($title, $original_title, $country, $description, $genres) {
+    public function __construct($image, $title, $original_title, $country, $description, $genres) {
+        $this->image = $image; //immagine
         $this->title = $title; //titolo
         $this->original_title = $original_title; //titolo originale
         $this->country = $country; //paese
         $this->description = $description; //descrizione
         $this->genres = $genres; //generi
+    }
+    //Metodo per ottenere l'immagine
+    public function getImage() {
+        return $this->image; //restituisco l'immagine
     }
     //Metodo per ottenere il titolo
     public function getTitle() {
@@ -33,6 +39,10 @@ class Movie {
     //Metodo per ottenere i generi
     public function getGenres() {
         return $this->genres; //restituisco i generi
+    }
+    //Metodo per impostare l'immagine
+    public function setImage($image) {
+        $this->image = $image; //imposto l'immagine
     }
     //Metodo per impostare il titolo
     public function setTitle($title) {

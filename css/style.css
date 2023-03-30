@@ -18,6 +18,7 @@ body {
 /* Container */
 .container {
     max-width: 1200px;
+    margin: 0px auto;
 }
 
 /* Main */
@@ -27,7 +28,7 @@ body {
 
 /* Lista di film */
 .list {
-    padding: 0px 20px;
+    padding: 10px 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
@@ -35,12 +36,13 @@ body {
 
 /* Elementi della lista di film */
 .list-item {
-    flex-basis: calc((100% / 3) - (30px * (2 / 3)));
+    flex-basis: calc((100% / 4) - (30px * (3 / 4)));
 }
 
 /* Carta */
 .card {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -57,9 +59,10 @@ body {
 /* Immagine della carta */
 .card__image {
     width: 100%;
+    height: 100%;
     display: block;
     object-position: top;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 /* Corpo della carta */
@@ -80,4 +83,11 @@ body {
 .card:hover .card__body {
     display: flex;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Generi della carta */
+.card__genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
