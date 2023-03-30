@@ -1,25 +1,9 @@
 <!-- PHP -->
 <?php
+    require_once __DIR__ . "./database/db.php"; //importo il database
     require_once __DIR__ . "./models/Movie.php"; //includo la classe "Movie"
-    //Lista di film
-    $movie_list = [
-        [
-            "title" => "Ritorno al futuro", //titolo del film
-            "original_title" => "Back to The Future", //titolo originale del film
-            "country" => "USA", //paese del film
-            "description" => "Lorem Ipsum", //descrizione del film
-            "genres" => ["Azione", "Commedia", "Fantascienza"] //generi del film
-        ],
-        [
-            "title" => "Spider-Man", //titolo del film
-            "original_title" => "Spider-Man", //titolo originale del film
-            "country" => "USA", //paese del film
-            "description" => "Lorem Ipsum", //descrizione del film
-            "genres" => ["Azione", "Commedia"] //generi del film
-        ]
-    ];
-    $movie1 = new Movie($movie_list[0]["title"], $movie_list[0]["original_title"], $movie_list[0]["country"], $movie_list[0]["description"], $movie_list[0]["genres"]); //creo un'istanza di classe "Movie"
-    $movie2 = new Movie($movie_list[1]["title"], $movie_list[1]["original_title"], $movie_list[1]["country"], $movie_list[1]["description"], $movie_list[1]["genres"]); //creo un'istanza di classe "Movie"
+    $movie1 = new Movie($movies[0]["title"], $movies[0]["original_title"], $movies[0]["country"], $movies[0]["description"], $movies[0]["genres"]); //creo un'istanza di classe "Movie"
+    $movie2 = new Movie($movies[1]["title"], $movies[1]["original_title"], $movies[1]["country"], $movies[1]["description"], $movies[1]["genres"]); //creo un'istanza di classe "Movie"
     var_dump($movie1); //stampa della istanza di classe
     var_dump($movie2); //stampa della istanza di classe
 ?>
