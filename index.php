@@ -1,13 +1,12 @@
 <!-- PHP -->
 <?php
-    require_once __DIR__ . "./database/db.php"; //importo il database
-    require_once __DIR__ . "./models/Movie.php"; //includo la classe "Movie"
+    require_once __DIR__ . "/database/db.php"; //importo il database
+    require_once __DIR__ . "/models/Movie.php"; //includo la classe "Movie"
     $movies_list = []; //lista di film
     //Ciclo
     for ($i = 0; $i < count($movies); $i++) {
         $movies_list[$i] = new Movie($movies[$i]["image"], $movies[$i]["title"], $movies[$i]["original_title"], $movies[$i]["country"], $movies[$i]["description"], $movies[$i]["genres"]); //prendo i dati dal finto database e li salvo in un array
     }
-
 ?>
 <!DOCTYPE html>
 <html>
